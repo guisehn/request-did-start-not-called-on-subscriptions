@@ -1,0 +1,13 @@
+{
+  "name": "apollo-server-did-encounter-errors-not-called-on-subscriptions",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/guisehn/apollo-server-did-encounter-errors-not-called-on-subscriptions",
+  "author": "Guilherme Sehn <guilherme@hey.com>",
+  "license": "MIT",
+  "dependencies": {
+    "apollo-server": "^2.21.0",
+    "graphql": "^15.5.0",
+    "graphql-tools": "^7.0.4"
+  }
+}
