@@ -6,9 +6,10 @@ const { PubSub, gql } = require('apollo-server')
 const pubsub = new PubSub()
 
 const AuthDirective = require('./auth-directive')
-const AuthDirectiveDeclaration = AuthDirective.getDeclaration()
 
-const baseTypeDefs = gql`
+const typeDefs = gql`
+  directive @auth on FIELD_DEFINITION
+
   type Query {
     testQuery: String @auth
   }
@@ -35,7 +36,7 @@ const resolvers = {
 }
 
 module.exports = makeExecutableSchema({
-  typeDefs: [baseTypeDefs, AuthDirectiveDeclaration],
+  typeDefs,
   resolvers,
   schemaDirectives: { auth: AuthDirective }
 })
