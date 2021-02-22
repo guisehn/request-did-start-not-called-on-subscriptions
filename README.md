@@ -1,5 +1,7 @@
 # request-did-start-not-called-on-subscriptions
 
+Minimal reproducible example for issue: https://github.com/apollographql/apollo-server/issues/4942
+
 This repository implements an Apollo GraphQL server with a query `testQuery` and a subscription `testSubscription`.
 
 Both have an `@auth` directive that always throws error with the message `Not authorized`.
@@ -11,7 +13,7 @@ whenever any of these callbacks are called.
 
 Tested with node 14. Run `yarn` on this directory to install the dependencies.
 
-Run the server with `PORT=3000 node index.js`
+Start the server with `PORT=3000 node index.js`
 
 Open the GraphQL console at `http://localhost:3000/`
 
