@@ -11,26 +11,8 @@ class AuthDirective extends SchemaDirectiveVisitor {
   }
 
   visitFieldDefinition (field) {
-    const wrapper = originalFunction => {
-      return async function (...args) {
-        // Throws 'Not authorized' error for every query/mutation/subscription that
-        // uses this directive.
-        throw new Error('Not authorized')
-      }
-    }
-
-    const wrapProperty = (name, fn) => {
-      const originalFunction = field[name]
-      if (originalFunction) {
-        field[name] = fn(originalFunction)
-      }
-    }
-
-    // wrap field.resolve so that it applies the directive to queries and mutations
-    wrapProperty('resolve', wrapper)
-
-    // wrap field.subscribe so that it applies the directive to subscriptions
-    wrapProperty('subscribe', wrapper)
+    field.resolve = () => { throw new Error('Not authorized') }
+    field.subscribe = () => { throw new Error('Not authorized') }
   }
 }
 
